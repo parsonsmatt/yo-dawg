@@ -91,6 +91,7 @@ library
                  , time
                  , case-insensitive
                  , wai
+                 , servant-persistent
 
 executable         mount-servant-in-yesod
     if flag(library-only)
