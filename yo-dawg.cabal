@@ -1,4 +1,4 @@
-name:              mount-servant-in-yesod
+name:              yo-dawg
 version:           0.0.0
 cabal-version:     >= 1.8
 build-type:        Simple
@@ -17,12 +17,10 @@ library
                      Foundation
                      Import
                      Import.NoFoundation
-                     Model
                      Settings
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
-                     Handler.Comment
                      Handler.Profile
 
     if flag(dev) || flag(library-only)
@@ -93,13 +91,13 @@ library
                  , wai
                  , servant-persistent
 
-executable         mount-servant-in-yesod
+executable         yo-dawg
     if flag(library-only)
         Buildable: False
 
     main-is:           main.hs
     hs-source-dirs:    app
-    build-depends:     base, mount-servant-in-yesod
+    build-depends:     base, yo-dawg
 
     ghc-options:       -threaded -rtsopts -with-rtsopts=-N
 
@@ -151,7 +149,7 @@ test-suite test
                 CPP
 
     build-depends: base
-                 , mount-servant-in-yesod
+                 , yo-dawg
                  , yesod-auth
                  , yesod-test >= 1.5.2 && < 1.6
                  , yesod-core
