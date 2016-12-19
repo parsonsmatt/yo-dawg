@@ -27,6 +27,7 @@ data App = App
     , appConnPool    :: ConnectionPool -- ^ Database connection pool.
     , appHttpManager :: Manager
     , appLogger      :: Logger
+    , appSubApi      :: Application
     }
 
 data MenuItem = MenuItem
@@ -172,6 +173,8 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
+getServantPersistent :: App -> WaiSubsite
+getServantPersistent = WaiSubsite . appSubApi
 
 -- Define breadcrumbs.
 instance YesodBreadcrumbs App where

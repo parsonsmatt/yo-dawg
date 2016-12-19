@@ -36,6 +36,9 @@ import Handler.Common
 import Handler.Home
 import Handler.Profile
 
+import qualified Api as ServantPersistent
+import Config (Config(..), Environment(Production))
+
 -- This line actually creates our YesodDispatch instance. It is the second half
 -- of the call to mkYesodData which occurs in Foundation.hs. Please see the
 -- comments there for more details.
@@ -60,7 +63,10 @@ makeFoundation appSettings = do
     -- logging function. To get out of this loop, we initially create a
     -- temporary foundation without a real connection pool, get a log function
     -- from there, and then create the real foundation.
-    let mkFoundation appConnPool = App {..}
+    let mkFoundation appConnPool = 
+            let apiCfg = Config appConnPool Production
+                appSubApi = ServantPersistent.app apiCfg
+             in App {..}
         -- The App {..} syntax is an example of record wild cards. For more
         -- information, see:
         -- https://ocharles.org.uk/blog/posts/2014-12-04-record-wildcards.html

@@ -4,6 +4,8 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
+/api ServantPersistentR WaiSubsite getServantPersistent
+
 / HomeR GET POST
 
 /profile ProfileR GET
